@@ -12,14 +12,15 @@ from models.state import State
 from models.user import User
 
 
-clss = { "amenities": Amenity, "cities": City, "places": Place, 
-"reviews": Review, "states": State, "users": User}
+clss = {"amenities": Amenity, "cities": City, "places": Place,
+        "reviews": Review, "states": State, "users": User}
 
 
 @app_views.route('/status')
 def status():
     """ create a route status"""
     return jsonify({"status": "OK"})
+
 
 @app_views.route('/stats')
 def stats():
