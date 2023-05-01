@@ -74,9 +74,12 @@ class DBStorage:
 	
     def get(self, cls, id):
         """ A method to retrieve one object returns the object based on the class and its ID or None if not found """
-        ob = self.all(cls)
-        key = "{}.{}".format(cls.__name__, id)
-        return obj.get(key)
+        if cls and id:
+            ob = self.all(cls)
+            key = "{}.{}".format(cls.__name__, id)
+            return obj.get(key)
+        else:
+            return None
 
     def count(self, cls=None):
         """
