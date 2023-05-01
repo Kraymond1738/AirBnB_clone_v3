@@ -65,15 +65,18 @@ class FileStorage:
             if key in self.__objects:
                 del self.__objects[key]
 
-    def count(self, cls=None):
+    def get(self, cls=None):
          """
          takes in the class
          returns an object from the file storage
          based on the class and its ID
          """
-         ob = self.all(cls)
-         key = "{}.{}".format(cls.__name__, id)
-         return ob.get(key)
+         if cls and id:
+             ob = self.all(cls)
+             key = "{}.{}".format(cls.__name__, id)
+             return ob.get(key)
+         else:
+             return None
 
     def count(self, cls=None):
         """
