@@ -1,12 +1,10 @@
 #!/usr/bin/python3
+'''index blueprint'''
 
-"""
-This module provides the status and stats API endpoints.
-"""
-
-from flask import jsonify
 from api.v1.views import app_views
+from flask import jsonify
 from models import storage
+
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
@@ -14,26 +12,21 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-
-CLASSES = {"amenities": Amenity, "cities": City, "places": Place,
-           "reviews": Review, "states": State, "users": User}
+CLASSES = {"amenities": Amenity, "cities": City,
+           "places": Place, "reviews": Review, "states": State, "users": User}
 
 
 @app_views.route('/status')
 def status():
-    """
-    Returns a JSON string with the status of the web server
-    """
+    '''returns json object with the app status'''
     return jsonify({"status": "OK"})
 
 
 @app_views.route('/stats')
 def stats():
-    """
-    Retrieves the number of objects for each class
-    """
-    stats_dict = {}
-    for cls_name, cls in CLASSES.items():
-        count = storage.count(cls)
-        stats_dict[cls_name] = count
-    return jsonify(stats_dict)
+    '''retrieves the number of each objects by type'''
+    result = {}
+    for class_name in CLASSES:
+        counter = storage.count(CLASSES[class_name])
+        result[class_name] = counter
+    return jsonify(result)

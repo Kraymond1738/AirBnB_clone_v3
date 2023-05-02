@@ -34,7 +34,7 @@ class FileStorage:
     """
 
     # string - path to the JSON file
-    __file_path = "file.json"
+    __file_path = "./dev/file.json"
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
 
