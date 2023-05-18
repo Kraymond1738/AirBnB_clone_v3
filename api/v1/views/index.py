@@ -12,8 +12,12 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+<<<<<<< HEAD
 
 classes = {"amenities": Amenity, "cities": City,
+=======
+CLASSES = {"amenities": Amenity, "cities": City,
+>>>>>>> 37f16594d286a9df603fd06c1a4e3a852461a235
            "places": Place, "reviews": Review, "states": State, "users": User}
 
 
